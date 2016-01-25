@@ -1,34 +1,23 @@
-function Places(location,landmarks, timeOfYear, notes){
-  this.location = location;
-  this.landmarks = landmarks;
-  this.timeOfYear = timeOfYear;
-  this.notes = notes;
-  // this.fullName = function() {
-  //   return this.firstName + " " + this.lastName;
-  // }
+function ToDo(task,note){
+  this.task = task;
+  this.note = note;
 }
 
 $(function(){
-  $("form#newPlace").submit(function(event){
+  $("form#newToDo").submit(function(event){
     event.preventDefault();
-    var location = $("#location").val();
-    var landmarks = $("#landmarks").val();
-    var timeOfYear = $("#timeOfYear").val();
-    var notes = $("#notes").val();
-    var newPlace = new Places(location,landmarks, timeOfYear, notes);
-    $("#places").append("<li><span class='place'>"+newPlace.location+"</span></li>");
+    var task = $("#task").val();
+    var note = $("#note").val();
+    var newToDo = new ToDo(task,note);
+    $("#tasks").append("<li><span class='toDo'>"+newToDo.task+"</span></li>");
 
-    $("input#location").val("");
-    $("input#landmarks").val("");
-    $("input#timeOfYear").val("");
-    $("input#notes").val("");
+    $("input#task").val("");
+    $("input#note").val("");
 
-    $('.place').last().click(function() {
-      $("#show-place").show();
-      $("#show-place h2").text(newPlace.location);
-      $(".landmarks").text(newPlace.landmarks);
-      $(".time").text(newPlace.timeOfYear);
-      $(".notes").text(newPlace.notes);
+    $('.toDo').last().click(function() {
+      $("#show-task").show();
+      $("#show-task h2").text(newToDo.task);
+      $(".note").text(newToDo.note);
     });
   });
 
